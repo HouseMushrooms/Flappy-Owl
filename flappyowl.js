@@ -33,8 +33,10 @@ let velocityX = -2; //pipes moving left speed
 let velocityY = 0; //bird jump speed
 let gravity = 0.4;
 
+//game over and win
 let gameOver = false;
 let score = 0;
+let gameWin = false;
 
 window.onload = function(){
     board = document.getElementById("board");
@@ -107,10 +109,22 @@ function update() {
     context.font = "45px Helvetica";
     context.fillText(score, 5, 45);
 
+    if(score == 10){
+        gameWin = true;
+    }
+
     if(gameOver){
         context.fillText("GAME OVER", 45, boardHeight/2);
     }
+    context.fillStyle = "white";
+    context.font = "30px Helvetica";
+    if(gameOver){
+        context.fillText("Tap to Play Again!", 55, 370);
+    }
+
 }
+
+
 
 function placeTrashcans(){
     if (gameOver){
